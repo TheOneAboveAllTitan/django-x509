@@ -25,6 +25,7 @@ matrix:
 branches:
   only:
     - master
+    - fixes-53
 
 # perform static analysis before installing all dependencies
 # this allows to save resources and build time if this step fails
