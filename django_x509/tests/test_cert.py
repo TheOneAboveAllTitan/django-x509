@@ -488,3 +488,10 @@ BxZA3knyYRiB0FNYSxI6YuCIqTjr0AoBvNHdkdjkv2VFomYNBd8ruA==
         ca.full_clean()
         ca.save()
         self.assertIsInstance(ca.pkey, crypto.PKey)
+
+    def test_generate_cert_with_generalizedTime(self):
+        """ Any date after 2049, should be in generalizedTime"""
+        cert = self._create_cert(validity_end=datetime(2050, 1, 1, 0, 0, 0, 0))
+        cert.full_clean()
+        cert.save()
+        self.assertIsInstance(cert.pkey, crypto.PKey)
